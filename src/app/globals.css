@@ -67,3 +67,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+*, ::before, ::after {
+  box-sizing: content-box;
+}

@@ -9,16 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fluent/bundle": "^0.18.0",
+    "@fluent/dom": "^0.10.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@wojtekmaj/react-hooks": "^1.21.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "core-js": "^3.38.1",
     "lucide-react": "^0.436.0",
     "next": "14.2.6",
+    "pdfjs-dist": "^4.5.136",
     "react": "^18",
     "react-dom": "^18",
+    "react-pdf": "^9.1.0",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7",
-    "pdfjs-dist": "^4.5.136"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
