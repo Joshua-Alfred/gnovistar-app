@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button"
 import BgGradientSection from "@/components/BgGradientSection"
 import { MacbookScroll } from "@/components/ui/macbook-scroll"
 import Image from "next/image"
+import { Input } from "@/components/ui/input"
 import { SignInButton, SignedOut } from "@clerk/nextjs"
-import { FileStack, Bot, PenTool } from "lucide-react"
+import { FileStack, Bot, PenTool, CheckCircle, Facebook, Twitter, Instagram, Github } from "lucide-react"
 import Navbar from "@/components/Navbar"
 import { useUser } from '@clerk/clerk-react'
+import PricingCard from "@/components/PricingCard"
+import { InfiniteMovingCardsDemo } from "@/components/InfiniteMovingCards"
 export default function LandingPage() {
   const { isSignedIn, user, isLoaded } = useUser()
   return (
@@ -43,250 +46,136 @@ export default function LandingPage() {
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="flex justify-center items-center py-5 gap-5">
-            <div className="self-start flex-col flex gap-10 px-5">
+          <div className="flex-col md:flex-row flex justify-center items-center py-5 gap-5">
+            <div className="md:self-start flex-col flex gap-10 px-5">
               <div className="p-5 rounded-full w-min bg-primary">
-                <FileStack size={64} className="text-accent"/>
+                <FileStack size={48} className="text-accent"/>
               </div>
               <div>
                 <h1 className="text-3xl font-bold mb-5"> Organize with 'Books'</h1>
                 <p className="max-w-[500px]">Start by creating a ‘Book’. Enter a title and description, and let the AI recommend articles from Google Scholar and blogs to jumpstart your collection.</p>
               </div>
             </div>
-            <div className="bg-[#5C5C5C] p-5 self-start">
-              <Image src="/multiplePdfs.png" width={500} height={300} alt={"GnoVistar PDF"}/>
+            <div className="rounded bg-[#5C5C5C] shadow-lg md:self-start border-full border-8" style={{
+              background:
+                "linear-gradient(180deg, var(--neutral-800), var(--neutral-900)",
+            }}>
+              <Image src="/multiplePdfs.png" width={500} height={300} alt={"GnoVistar PDF"} className="rounded"/>
             </div>
           </div>
-          <div className="flex justify-center items-center py-5 gap-5 flex-row-reverse">
-            <div className="self-start flex-col flex gap-10 px-5">
+          <div className="flex-col md:flex-row flex justify-center items-center py-5 gap-5 md:flex-row-reverse">
+            <div className="md:self-start flex-col flex gap-10 px-5">
               <div className="p-5 rounded-full w-min bg-primary">
-                <PenTool size={64} className="text-accent"/>
+                <PenTool size={48} className="text-accent"/>
               </div>
               <div>
                 <h1 className="text-3xl font-bold mb-5">Engage with PDFs</h1>
                 <p className="max-w-[500px]">Upload PDFs based on AI suggestions, and make them your own by highlighting, adding notes, and commenting directly on the documents.</p>
               </div>
             </div>
-            <div className="bg-[#5C5C5C] p-5 self-start">
-              <Image src="/pdf1.png" width={500} height={300} alt={"GnoVistar PDF"}/>
+            <div className="rounded bg-[#5C5C5C] shadow-lg md:self-start border-full border-8" style={{
+              background:
+                "linear-gradient(180deg, var(--neutral-800), var(--neutral-900)",
+            }}>
+              <Image src="/pdf1.png" width={500} height={300} alt={"GnoVistar PDF"} className="rounded"/>
             </div>
           </div>
-          <div className="flex justify-center items-center py-5 gap-5">
-            <div className="self-start flex-col flex gap-10 px-5">
+          <div className="flex-col md:flex-row flex justify-center items-center py-5 gap-5">
+            <div className="md:self-start flex-col flex gap-10 px-5">
               <div className="p-5 rounded-full w-min bg-primary">
-              <Bot size={64} className="text-accent" />
+              <Bot size={48} className="text-accent" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold mb-5">AI-Generated Summaries</h1>
                 <p className="max-w-[500px]">Automatically receive summaries and key insights from your PDFs, helping you understand and manage your documents more effectively.</p>
               </div>
             </div>
-            <div className="bg-[#5C5C5C] p-5 self-start">
-              <Image src="/pdf2.png" width={500} height={300} alt={"GnoVistar PDF"}/>
+            <div className="shadow-lg rounded bg-[#5C5C5C] md:self-start border-full border-8" style={{
+              background:
+                "linear-gradient(180deg, var(--neutral-800), var(--neutral-900)",
+            }}>
+              <Image src="/pdf2.png" width={500} height={300} alt={"GnoVistar PDF"} className="rounded"/>
             </div>
           </div>
         </section>
-        <section id="features" className="w-full min-h-[800px] py-12 md:py-24 lg:py-32">
+        <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            {/* how it works and then next section is key features maybe no about section as well and add footer */}
-            <h2 className="text-center text-3xl sm:text-4xl md:text-5xl mb-12">Key Features</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <BgGradientSection title={'Interactive Pdf Viewer'} content={'Highlight, annotate, and comment on your PDFs with ease.'} img={'FileText'}/>
-              <BgGradientSection title={'AI-Powered Summarization'} content={'Get quick insights with AI-generated summaries of your documents.'} img={'Brain'}/>
-              <BgGradientSection title={'Batch PDF Collection'} content={'Quickly upload and organize PDFs into your Books for easy access and AI insights.'} img={'Folder'}/>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                Simple Pricing
+              </h2>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Choose the plan that fits your needs
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 mt-12 md:grid-cols-3 md:gap-8">
+              <PricingCard
+                title="Free"
+                price="$0"
+                description="For individuals just getting started"
+                features={[
+                  "Basic PDF viewing and annotation",
+                  "Basic AI Summarization",
+                  "1 Book Limit"
+                ]}
+                buttonText="Get Started"
+              />
+              <PricingCard
+                title="Basic"
+                price="$4.99"
+                description="For serious readers and students"
+                features={[
+                  "Basic PDF viewing and annotation",
+                  "Advanced AI Summarization",
+                  "3 Book Limit",
+                  "AI Suggestions and links to articles"
+                ]}
+                buttonText="Choose Basic"
+                highlighted={true}
+              />
+              <PricingCard
+                title="Pro"
+                price="$9.99"
+                description="For power users and professionals"
+                features={[
+                  "Basic PDF viewing and annotation",
+                  "Advanced AI Summarization",
+                  "10 Book Limit",
+                  "AI Suggestions and links to articles",
+                  "YouTube video recommendations"
+                ]}
+                buttonText="Choose Pro"
+              />
             </div>
           </div>
         </section>
-        <section id="pricing" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12">Simple pricing</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="flex flex-col p-6 bg-background dark:shadow-white shadow-lg rounded-lg border-t-8 border-primary">
-                <h3 className="text-2xl font-bold mb-4">Free</h3>
-                <p className="text-4xl font-bold mb-6">$0<span className="text-base font-normal">/month</span></p>
-                <ul className="mb-6 space-y-2">
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Basic PDF viewing and annotation
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Basic AI Summarization
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    1 Book Limit
-                  </li>
-                </ul>
-                <Button className="mt-auto font-bold">Sign Up</Button>
-              </div>
-              <div className="flex flex-col p-6 bg-background dark:shadow-white shadow-lg rounded-lg border-t-8 border-primary">
-                <h3 className="text-2xl font-bold mb-4">Basic</h3>
-                <p className="text-4xl font-bold mb-6">$4.99<span className="text-base font-normal">/month</span></p>
-                <ul className="mb-6 space-y-2">
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Basic PDF viewing and annotation
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Advanced AI Summarization
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    3 Book Limit
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    AI Suggestions and links to articles
-                  </li>
-                </ul>
-                <Button className="mt-auto font-bold">Choose Basic</Button>
-              </div>
-              <div className="flex flex-col p-6 bg-background shadow-lg dark:shadow-white rounded-lg border-t-8 border-primary">
-                <h3 className="text-2xl font-bold mb-4">Pro</h3>
-                <p className="text-4xl font-bold mb-6">$9.99<span className="text-base font-normal">/month</span></p>
-                <ul className="mb-6 space-y-2">
-                <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Basic PDF viewing and annotation
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Advanced AI Summarization
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    10 Book Limit
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    AI Suggestions and links to articles
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Youtube videos
-                  </li>
-                </ul>
-                <Button className="mt-auto font-bold">Choose Pro</Button>
-              </div>
-            </div>
-          </div>
+        <section className="w-full">
+          <InfiniteMovingCardsDemo/>
         </section>
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-background to-secondary">
           <div className="container px-4 md:px-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12">Gnovistar Waitlist</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+              Gnovistar Waitlist
+            </h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground text-center mb-12">
-              Be the first to experience Gnovistar, the ultimate document management app designed for seamless PDF annotation, note-taking, and AI-driven insights. Join our waitlist today to get early access and stay ahead with exclusive features that will enhance your productivity and streamline your document workflow.
+            Be the first to experience Gnovistar, the ultimate document management app for seamless PDF annotation, note-taking, and AI-driven insights—join our waitlist today for early access to exclusive productivity-enhancing features.
             </p>
             <div className="flex justify-center">
               <div className="flex gap-5">
                 {isSignedIn ? (
-                  <>
-                    <p className="text-2xl border-2 p-5 bg-secondary rounded">You are already on the waitlist</p>
-                  </>
+                  <div className="bg-primary text-primary-foreground rounded-lg shadow-lg p-6 flex items-center space-x-4 animate-fade-in">
+                    <CheckCircle className="w-8 h-8" />
+                    <div>
+                      <p className="text-xl font-semibold">You're on the waitlist!</p>
+                      <p className="text-sm opacity-90">We'll notify you when it's your turn</p>
+                    </div>
+                  </div>
                 ) : (
                   <div>
                     <SignedOut>
                       <SignInButton>
-                        <Button className="font-bold">
-                          Sign up now
+                        <Button className="font-bold text-lg px-8 py-6 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-all duration-300 ease-in-out hover:scale-105">
+                          Join the Waitlist
                         </Button>
                       </SignInButton>
                     </SignedOut>
@@ -297,16 +186,40 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">© 2024 Gnovistar. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Privacy
-          </Link>
-        </nav>
+      <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex flex-col gap-4 py-10 md:flex-row md:items-center">
+          <div className="flex-1 space-y-4">
+            <h2 className="text-xl font-semibold">Gnovistar</h2>
+            <p className="text-sm text-muted-foreground max-w-xs">
+              Empowering PDF management with AI-driven insights.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 min-[400px]:flex-row justify-between items-center md:flex-col md:items-end md:justify-start">
+            <div className="flex gap-4 text-muted-foreground">
+              <Link className="hover:text-foreground transition-colors" href="https://github.com/kenyounot123/gnovistar-app">
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+            </div>
+            <p className="text-xs text-muted-foreground">© 2024 Gnovistar. All rights reserved.</p>
+          </div>
+        </div>
+        <div className="container flex flex-col gap-2 sm:flex-row py-6 items-center border-t">
+          <nav className="flex gap-4 sm:gap-6">
+            <Link className="text-xs hover:underline underline-offset-4" href="#">
+              Terms of Service
+            </Link>
+            <Link className="text-xs hover:underline underline-offset-4" href="#">
+              Privacy Policy
+            </Link>
+            <Link className="text-xs hover:underline underline-offset-4" href="#">
+              Cookie Policy
+            </Link>
+          </nav>
+          <p className="text-xs text-muted-foreground sm:ml-auto">
+            Designed with ❤️ by Gnovistar Team
+          </p>
+        </div>
       </footer>
     </div>
   )

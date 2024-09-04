@@ -1,3 +1,4 @@
+
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,6 +30,29 @@ type BookData = {
   name: string;
 };
 
+const dummyBookData = [
+  {
+    bookId: "randomString1",
+    bookTitle: "Topology",
+    bookDescription: "Math is very fun and it's so cool, oh my god.",
+    bookPurpose: "Education",
+    bookPages: [],
+  },
+  {
+    bookId: "randomString2",
+    bookTitle: "Algebra",
+    bookDescription: "An interesting journey into abstract structures.",
+    bookPurpose: "Study",
+    bookPages: [],
+  },
+  {
+    bookId: "randomString3",
+    bookTitle: "Calculus",
+    bookDescription: "Understanding the change and motion in mathematics.",
+    bookPurpose: "Research",
+    bookPages: [],
+  },
+];
 export default function Dashboard() {
   const [books, setBooks] = useState<BookData[]>([]);
   const [renameBookId, setRenameBookId] = useState<string | null>(null);

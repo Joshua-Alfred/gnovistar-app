@@ -35,7 +35,7 @@
   .dark {
     --background: 0 0% 0%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 0 0% 9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
@@ -68,4 +68,22 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+ul, 
+ol {
+  padding: 0 1rem;
+  margin: 1.25rem 1rem 1.25rem 0.4rem;
+  list-style-type: circle;
+}
+li p {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+h1 { 
+  font-size: 1.4rem; 
+}
+
+h2 { 
+  font-size: 1.2rem; 
 }

@@ -2,8 +2,12 @@
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
+import {Sun, Moon, BookOpen, ChevronDown} from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { Book } from "@/types/book";
+import { useTheme } from 'next-themes'
+import { useEffect } from "react";
 
 interface Links {
   label: string;
@@ -200,13 +204,13 @@ export const SidebarLink = ({
     </Link>
   );
 };
-export const SideUserButton = ({
-  user,
-  name,
+export const SideButton = ({
+  button,
+  label,
   className,
 }: {
-  user: React.ReactNode;
-  name?: string | null
+  button: React.ReactNode;
+  label?: string | null
   className?: string;
 }) => {
   const { open, animate } = useSidebar();
@@ -217,7 +221,7 @@ export const SideUserButton = ({
         className
       )}
     >
-      {user}
+      {button}
 
       <motion.span
         animate={{
@@ -226,8 +230,123 @@ export const SideUserButton = ({
         }}
         className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
       >
-        {name ? name : 'John Doe'}
+        {label}
       </motion.span>
+    </div>
+  );
+};
+interface SideDarkModeProps {
+  className?: string;
+}
+
+export const SideDarkMode = ({
+  className,
+}: SideDarkModeProps) => {
+  const { open, animate } = useSidebar(); // Assuming useSidebar is a hook for managing sidebar state
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
+
+  const isDarkMode = theme === 'dark';
+  const toggleTheme = () => setTheme(isDarkMode ? 'light' : 'dark');
+
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-start gap-2 group/sidebar py-2",
+        className
+      )}
+    >
+      <div onClick={toggleTheme} className="hover:cursor-pointer">
+        {isDarkMode ? (
+          <Sun className="text-primary h-5 w-5 flex-shrink-0" />
+        ) : (
+          <Moon className="text-primary h-5 w-5 flex-shrink-0" />
+        )}
+      </div>
+
+      <motion.span
+        animate={{
+          display: animate ? (open ? "inline-block" : "none") : "inline-block",
+          opacity: animate ? (open ? 1 : 0) : 1,
+        }}
+        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+      >
+        <div onClick={toggleTheme} className="hover:cursor-pointer">
+          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+        </div>
+      </motion.span>
+    </div>
+  );
+};
+export const SideBook = ({
+  books,
+  className,
+}:{
+  books: Book[],
+  className?: string,
+}) => {
+  const { open, animate } = useSidebar(); // Assuming useSidebar is a hook for managing sidebar state
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleDropdownToggle = () => {
+    setDropdownOpen((prev) => !prev);
+  };
+
+  return (
+    <div
+      className={cn(
+        "group/sidebar py-2",
+        className
+      )}
+    >
+      <div className="flex items-center justify-start gap-2 ">
+        <div className="hover:cursor-pointer">
+          <BookOpen className="text-primary h-5 w-5 flex-shrink-0" />
+        </div>
+        <motion.span
+          animate={{
+            display: animate ? (open ? "inline-block" : "none") : "inline-block",
+            opacity: animate ? (open ? 1 : 0) : 1,
+          }}
+          className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        >
+          <div className="relative flex gap-5 items-center justify-between w-full">
+            <div
+              className="cursor-pointer"
+              onClick={handleDropdownToggle}
+            >
+              Books 
+            </div>
+            <ChevronDown className="cursor-pointer" onClick={handleDropdownToggle}/>
+          </div>
+        </motion.span>
+      </div>
+      {isDropdownOpen && open &&(
+        <div className="w-48">
+          {books.length > 0 ? (
+            <ul className="py-0 my-2">
+              {books.map((book) => (
+                <Link key={book.id} href={`/dashboard/${book.id}`}>
+                  <li className="text-xs py-2 px-5 hover:bg-slate-200 dark:hover:bg-gray-700">
+                    {book.title}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          ) : (
+            <div className="p-2 text-center text-gray-500 dark:text-gray-400">
+              No books available
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
