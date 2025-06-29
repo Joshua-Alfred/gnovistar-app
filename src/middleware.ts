@@ -12,10 +12,10 @@ export default clerkMiddleware((auth, req) => {
     auth().protect()
     const { sessionClaims } = auth()
     const { isBetaUser } = sessionClaims?.metadata as UserMetadata
-    if (!isBetaUser) {
-      // 👉 If the user is not a beta user, redirect them to the waitlist
-      return NextResponse.redirect(new URL('/waitlist', req.url))
-    }
+    // if (!isBetaUser) {
+    //   // 👉 If the user is not a beta user, redirect them to the waitlist
+    //   return NextResponse.redirect(new URL('/waitlist', req.url))
+    // }
   }
 })
 
